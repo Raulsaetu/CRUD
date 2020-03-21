@@ -1,0 +1,301 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Omzet</title>
+  <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/840569fac1.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/840569fac1.js" crossorigin="anonymous"></script>
+</head>
+<style>
+#container {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#container.toggled {
+    padding-left: 250px;
+}
+
+#sidebar {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #2c3e50;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#container.toggled #sidebar {
+    width: 250px;
+}
+
+#page-content-container {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#container.toggled #page-content-container {
+    position: absolute;
+    margin-right: -250px;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+    font-weight: bold;
+}
+
+@media(min-width:768px) {
+    #container {
+        padding-left: 250px;
+    }
+
+    #container.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar {
+        width: 250px;
+    }
+
+    #container.toggled #sidebar {
+        width: 0;
+    }
+
+    #page-content-container {
+        padding: 20px;
+        position: relative;
+    }
+
+    #container.toggled #page-content-container {
+        position: relative;
+        margin-right: 0;
+    }
+}
+</style>
+<body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#menu").click(function(e) {
+          e.preventDefault();
+        $("#container").toggleClass("toggled");
+        });
+    });
+</script>
+<!--togel-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div id="page-content-container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+        <a href="#menu" class="btn btn-default" id="menu"><i class="fas fa-list-ul"></i></a>  
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="http://localhost:7000/">Product</a>
+      <a class="nav-item nav-link" href="http://localhost:5000/cst/">Customer</a>
+      <a class="nav-item nav-link" href="http://localhost:3000/">Tanggal</a>
+      <a class="nav-item nav-link" href="http://localhost:1000/">Data</a>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <h2>Tanggal Pengiriman</h2>
+		<button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
+    <table class="table table-striped" id="mytable">
+      <thead>
+        <tr>
+          <th>ID_Pengiriman</th>
+          <th>Tanggal</th>
+          <th>Jumlah Yang Dikirim</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+         {{#each results}}
+        <tr>
+          <td>{{ id_omzet }}</td>
+          <td>{{ tgl }}</td>
+          <td>{{ lb_bersih }}</td>
+          <td>{{ lb_kotor }}</td>
+          <td>
+            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ id_omzet }}" data-tgl="{{ tgl }}" data-lb-bersih="{{ lb_bersih }}" data-lb-kotor="{{ lb_kotor }}">Edit</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ id_omzet }}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+	<!-- Add New Product Modal-->
+	  <form action="/save" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Omzet</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="date" name="tgl" class="form-control" placeholder="tgl" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="lb_bersih" class="form-control" placeholder="jumlah" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="lb_kotor" class="form-control" placeholder="total" required>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+	 </form>
+
+	 <!-- Edit Product Modal-->
+   <form action="/update" method="post">
+       <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Omzet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <input type="date" name="tgl" class="form-control tgl" placeholder="tgl" required>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" name="lb_bersih" class="form-control lb_bersih" placeholder="jumlah" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" name="lb_kotor" class="form-control lb_kotor" placeholder="total" required>
+              </div>
+            </div>           
+             <div class="modal-footer">
+              <input type="hidden" name="id" class="id_omzet">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+  </form>
+
+	 <!-- Delete Product Modal-->
+ 	  <form id="add-row-form" action="/delete" method="post">
+ 	     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	        <div class="modal-dialog">
+ 	           <div class="modal-content">
+ 	               <div class="modal-header">
+									 	<h5 class="modal-title" id="myModalLabel">Delete Omzet</h5>
+ 	                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+ 	               </div>
+ 	               <div class="modal-body">
+												 <strong>Are You Sure To Delete This Data?</strong>
+ 	               </div>
+ 	               <div class="modal-footer">
+									 		<input type="hidden" name="id_omzet" class="form-control product_id2" required>
+ 	                   	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ 	                  	<button type="submit" class="btn btn-success">Delete</button>
+ 	               </div>
+ 	      			</div>
+ 	        </div>
+ 	     </div>
+ 	 </form>
+
+<script src="/assets/js/jquery-3.3.1.js"></script>
+<script src="/assets/js/bootstrap.js"></script>
+<script>
+    $(document).ready(function(){
+			//showing data to modal for edit record
+      $('#mytable').on('click','.edit',function(){
+        var id_omzet = $(this).data('id');
+        var tgl = $(this).data('tgl');
+        var lb_bersih = $(this).data('lb_bersih');
+        var lb_kotor = $(this).data('lb_kotor');
+        $('#EditModal').modal('show');
+        $('.tgl').val(tgl);
+        $('.lb_bersih').val(lb_bersih);
+        $('.lb_kotor').val(lb_kotor);
+        $('.id_omzet').val(id_omzet);
+      });
+			//showing modal for delete record
+			$('#mytable').on('click','.delete',function(){
+        var id_omzet = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.product_id2').val(id_omzet);
+      });
+
+    });
+</script>
+</body>
+</html>

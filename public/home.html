@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/840569fac1.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/840569fac1.js" crossorigin="anonymous"></script>
+</head>
+<style>
+#container {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#container.toggled {
+    padding-left: 250px;
+}
+
+#sidebar {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #2c3e50;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#container.toggled #sidebar {
+    width: 250px;
+}
+
+#page-content-container {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#container.toggled #page-content-container {
+    position: absolute;
+    margin-right: -250px;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+    font-weight: bold;
+}
+
+@media(min-width:768px) {
+    #container {
+        padding-left: 250px;
+    }
+
+    #container.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar {
+        width: 250px;
+    }
+
+    #container.toggled #sidebar {
+        width: 0;
+    }
+
+    #page-content-container {
+        padding: 20px;
+        position: relative;
+    }
+
+    #container.toggled #page-content-container {
+        position: relative;
+        margin-right: 0;
+    }
+}
+</style>
+<body>
+<div id="container">
+<div id="sidebar">
+    <ul class="sidebar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="http://localhost:5000/home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:7000/">Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:5000/">Customer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3000/">Omzet</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:1000/">Data</a>
+          </li>
+        </ul>
+    
+    </ul>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#menu").click(function(e) {
+          e.preventDefault();
+        $("#container").toggleClass("toggled");
+        });
+    });
+</script>
+<!--togel-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div id="page-content-container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+        <a href="#menu" class="btn btn-default" id="menu"><i class="fas fa-list-ul"></i></a>  
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="http://localhost:5000/home/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="http://localhost:7000/">Product</a>
+      <a class="nav-item nav-link" href="http://localhost:5000/">Customer</a>
+      <a class="nav-item nav-link" href="http://localhost:3000/">Omzet</a>
+      <a class="nav-item nav-link" href="http://localhost:1000/">Data</a>
+    </div>
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"></h1>
+  </div>
+</div>
+
+
+
+
+
+<h5>app crud</h5>
+<hr/>
+<i>Dibuat Oleh : @</i>
+</body>
+</html>
